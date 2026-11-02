@@ -313,6 +313,7 @@ body {
 .hero-hex-svg {
   filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
   animation: logoGlitch 6s infinite;
+  overflow: visible;
 }
 
 @keyframes logoGlitch {
