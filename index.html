@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karan Kumar V | Ethical Hacker & Penetration Tester</title>
+  <meta name="description" content="Portfolio of Karan Kumar V - Cybersecurity Student, Ethical Hacker, and Penetration Tester. CERT-In Acknowledged Security Researcher.">
+  <meta name="keywords" content="Karan Kumar V, Cybersecurity, Ethical Hacker, Penetration Tester, CERT-In, Bug Bounty, Burp Suite, Web Security, AuthSentinel">
+  <meta name="author" content="Karan Kumar V">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Karan Kumar V | Ethical Hacker & Penetration Tester">
+  <meta property="og:description" content="Cybersecurity Student, CERT-In Acknowledged Security Researcher, and Developer of AuthSentinel.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Audio Feedback System & Matrix Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+  <div id="cur"></div>
+  <div id="cdot"></div>
+
+  <!-- Scanline Overlay -->
+  <div class="scanline"></div>
+
+  <!-- TOP NAVBAR -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <div class="logo-shield">
+        <svg viewBox="0 0 40 40" width="36" height="36">
+          <polygon points="20,2 38,9 38,23 20,38 2,23 2,9" fill="none" stroke="rgba(0, 240, 255, 0.7)" stroke-width="1.5" />
+          <polygon points="20,7 33,12 33,21 20,32 7,21 7,12" fill="none" stroke="rgba(0, 255, 136, 0.35)" stroke-width="1" />
+          <text x="20" y="24" text-anchor="middle" font-family="'Orbitron', monospace" font-size="11" font-weight="900" fill="#00f0ff">KV</text>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">KARAN<span class="highlight">KUMAR</span></span>
+        <span class="logo-sub">SEC_OPS // 2026</span>
+      </div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#about"><span class="nav-num">01.</span>ABOUT</a>
+      <a href="#disclosures"><span class="nav-num">02.</span>DISCLOSURES</a>
+      <a href="#projects"><span class="nav-num">03.</span>PROJECTS</a>
+      <a href="#skills"><span class="nav-num">04.</span>SKILLS</a>
+      <a href="#education"><span class="nav-num">05.</span>EDUCATION</a>
+      <a href="#terminal"><span class="nav-num">06.</span>TERMINAL</a>
+      <a href="#contact"><span class="nav-num">07.</span>CONTACT</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="sys-btn" id="matrixToggle" title="Toggle Digital Rain" aria-label="Toggle Matrix">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">RAIN: ON</span>
+      </button>
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hero-container">
+      <!-- Hex Cyber Emblem -->
+      <div class="hero-emblem-wrap">
+        <svg viewBox="0 0 320 100" width="300" height="95" class="hero-hex-svg">
+          <defs>
+            <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00f0ff" />
+              <stop offset="50%" stop-color="#00ff88" />
+              <stop offset="100%" stop-color="#00f0ff" />
+            </linearGradient>
+            <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Hex Shield -->
+          <polygon points="22,50 36,25 64,25 78,50 64,75 36,75" fill="none" stroke="url(#neonGrad)" stroke-width="1.6" filter="url(#cyanGlow)" />
+          <polygon points="28,50 39,30 61,30 72,50 61,70 39,70" fill="none" stroke="rgba(0, 255, 136, 0.4)" stroke-width="0.8" />
+          <circle cx="50" cy="50" r="5" fill="#00ff88" opacity="0.9" />
+          <circle cx="50" cy="50" r="2" fill="#00f0ff" />
+          <!-- Crosshairs -->
+          <line x1="28" y1="50" x2="72" y2="50" stroke="rgba(0, 240, 255, 0.4)" stroke-width="0.6" stroke-dasharray="2 2" />
+          <line x1="50" y1="30" x2="50" y2="70" stroke="rgba(0, 240, 255, 0.4)" stroke-width="0.6" stroke-dasharray="2 2" />
+          <!-- Emblem Title -->
+          <text x="96" y="44" font-family="'Orbitron', monospace" font-size="24" font-weight="900" fill="url(#neonGrad)" filter="url(#cyanGlow)">SEC_OPERATOR</text>
+          <text x="96" y="68" font-family="'Share Tech Mono', monospace" font-size="12" fill="#00ff88" letter-spacing="3">SYSTEM_CLEARANCE: L4</text>
+          <line x1="96" y1="78" x2="305" y2="78" stroke="rgba(0, 240, 255, 0.35)" stroke-width="1" />
+          <line x1="96" y1="81" x2="220" y2="81" stroke="rgba(0, 255, 136, 0.2)" stroke-width="0.5" />
+        </svg>
+      </div>
+
+      <div class="hero-tag">// CYBERSECURITY STUDENT · ETHICAL HACKER · PENETRATION TESTER</div>
+      <h1 class="hero-name">KARAN KUMAR V</h1>
+
+      <!-- Acknowledgment Badge -->
+      <div class="certin-hero-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-org">CERT-In</span>
+        <span class="badge-label">OFFICIALLY ACKNOWLEDGED RESPONSIBLE DISCLOSURE (2026)</span>
+      </div>
+
+      <p class="hero-subtitle">
+        Specializing in <span>Web Application Security Testing</span>, <span>Vulnerability Assessment</span>, and <span>API Penetration Testing</span>
+      </p>
+
+      <div class="typewriter-box">
+        <span class="tw-prefix">&gt; target_vector: </span>
+        <span id="tw-text"></span>
+        <span class="tw-cursor">█</span>
+      </div>
+
+      <!-- Hero 3D Stats Cards -->
+      <div class="hero-stats-row">
+        <div class="hero-stat-card" data-tilt>
+          <div class="stat-num">CERT-In</div>
+          <div class="stat-lbl">FORMAL CASE REGISTERED</div>
+          <div class="stat-glow"></div>
+        </div>
+        <div class="hero-stat-card" data-tilt>
+          <div class="stat-num">2+</div>
+          <div class="stat-lbl">CRITICAL EXPLOITS DISCLOSED</div>
+          <div class="stat-glow"></div>
+        </div>
+        <div class="hero-stat-card" data-tilt>
+          <div class="stat-num">2</div>
+          <div class="stat-lbl">SEC-TOOLS DEVELOPED</div>
+          <div class="stat-glow"></div>
+        </div>
+        <div class="hero-stat-card" data-tilt>
+          <div class="stat-num">2028</div>
+          <div class="stat-lbl">B.E. CSE CYBER SECURITY</div>
+          <div class="stat-glow"></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <a href="#disclosures" class="cyber-btn primary-btn">
+          <span class="btn-text">VIEW DISCLOSURES</span>
+          <span class="btn-glitch"></span>
+        </a>
+        <a href="#projects" class="cyber-btn secondary-btn">
+          <span class="btn-text">EXPLORE SEC_TOOLS</span>
+        </a>
+        <a href="#terminal" class="cyber-btn tertiary-btn">
+          <span class="btn-text">RUN TERMINAL</span>
+        </a>
+        <a href="https://github.com/KaranKumar-V-cyber" target="_blank" rel="noopener noreferrer" class="cyber-btn github-btn">
+          <span class="btn-text">GITHUB // REPOS</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE CYBER TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-badge">LATEST ADVISORIES</div>
+    <div class="ticker-marquee">
+      <div class="ticker-track">
+        <span><strong>CERT-In ACKNOWLEDGED:</strong> Formal Case Registered for OTP Brute Force & Session Replay Flaw</span>
+        <span><strong>GRAPHQL SECURITY:</strong> Introspection Exposure & Schema Leak Disclosed (railfeast.com)</span>
+        <span><strong>TOOL RELEASE:</strong> AuthSentinel - JWT & Authentication Security Analyzer</span>
+        <span><strong>TOOL RELEASE:</strong> SecureHeaders - Cross-Platform Web Security Header Scanner</span>
+        <span><strong>ACADEMIC:</strong> CMS College of Engineering and Technology - B.E. CSE (Cyber Security)</span>
+        <span><strong>HONOR:</strong> Rajyapuraskar Awardee - Bharat Scouts and Guides (2025)</span>
+        <!-- Duplicate for seamless loop -->
+        <span><strong>CERT-In ACKNOWLEDGED:</strong> Formal Case Registered for OTP Brute Force & Session Replay Flaw</span>
+        <span><strong>GRAPHQL SECURITY:</strong> Introspection Exposure & Schema Leak Disclosed (railfeast.com)</span>
+        <span><strong>TOOL RELEASE:</strong> AuthSentinel - JWT & Authentication Security Analyzer</span>
+        <span><strong>TOOL RELEASE:</strong> SecureHeaders - Cross-Platform Web Security Header Scanner</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT / SECURITY DOSSIER SECTION -->
+  <section id="about" class="section-container">
+    <div class="section-header">
+      <div class="sec-tag">// DOSSIER // PROFILE</div>
+      <h2 class="sec-title">SECURITY <span>PROFILE</span></h2>
+      <div class="sec-divider"></div>
+    </div>
+
+    <div class="about-grid">
+      <!-- 3D Dossier Badge Card -->
+      <div class="dossier-card-wrap">
+        <div class="dossier-card" id="profileCard" data-tilt>
+          <div class="dossier-card-inner">
+            <div class="dossier-header">
+              <span class="dossier-id">ID: KV-SEC-2026</span>
+              <span class="dossier-status"><span class="pulse-circle"></span>ACTIVE</span>
+            </div>
+
+            <!-- Stylized Holographic Cyber Avatar -->
+            <div class="avatar-box">
+              <svg viewBox="0 0 120 120" width="100" height="100" class="avatar-svg">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,240,255,0.25)" stroke-width="1.5" />
+                <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(0,255,136,0.3)" stroke-width="0.8" stroke-dasharray="4 3" />
+                <!-- Cyber Shield -->
+                <polygon points="60,20 86,32 86,64 60,88 34,64 34,32" fill="rgba(0,240,255,0.06)" stroke="#00f0ff" stroke-width="1.5" />
+                <!-- Keyhole / Terminal Icon -->
+                <path d="M52,48 L46,54 L52,60" fill="none" stroke="#00ff88" stroke-width="2" stroke-linecap="round" />
+                <path d="M58,62 L68,62" fill="none" stroke="#00ff88" stroke-width="2" stroke-linecap="round" />
+                <circle cx="60" cy="44" r="3" fill="#00f0ff" />
+                <!-- Target Reticle -->
+                <line x1="10" y1="60" x2="25" y2="60" stroke="#00f0ff" stroke-width="1" />
+                <line x1="95" y1="60" x2="110" y2="60" stroke="#00f0ff" stroke-width="1" />
+                <line x1="60" y1="10" x2="60" y2="25" stroke="#00f0ff" stroke-width="1" />
+                <line x1="60" y1="95" x2="60" y2="110" stroke="#00f0ff" stroke-width="1" />
+              </svg>
+              <div class="avatar-role">PENETRATION TESTER</div>
+            </div>
+
+            <div class="dossier-meta">
+              <div class="meta-row">
+                <span class="m-key">OPERATOR:</span>
+                <span class="m-val">KARAN KUMAR V</span>
+              </div>
+              <div class="meta-row">
+                <span class="m-key">LOCATION:</span>
+                <span class="m-val">Erode, Tamil Nadu, IN</span>
+              </div>
+              <div class="meta-row">
+                <span class="m-key">SPECIALIZATION:</span>
+                <span class="m-val highlight">Web App & API Security</span>
+              </div>
+              <div class="meta-row">
+                <span class="m-key">PRIMARY TOOLKIT:</span>
+                <span class="m-val">Burp Suite · Nmap · Kali</span>
+              </div>
+              <div class="meta-row">
+                <span class="m-key">LANGUAGES:</span>
+                <span class="m-val">English, Tamil</span>
+              </div>
+            </div>
+
+            <div class="dossier-fingerprint">
+              <code>SHA256: 7f8a9e2c...certin_ack_2026</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dossier Narrative & Info -->
+      <div class="about-content">
+        <h3 class="about-lead">
+          Bridging Core Computer Science Fundamentals with <span>Practical Security Research</span> to Mitigate Real-World Threats.
+        </h3>
+        <p class="about-p">
+          I am a Computer Science and Engineering student specializing in Cyber Security at CMS College of Engineering and Technology (2024–2028). My focus lies in <strong>vulnerability assessment, authorized web application security testing, and bug bounty hunting</strong>.
+        </p>
+        <p class="about-p">
+          I utilize advanced traffic analysis and interception tools like <strong>Burp Suite</strong> to uncover high-impact attack vectors including GraphQL schema exposure, IDOR / broken access control, and authentication bypasses. My independent vulnerability research has been officially acknowledged by <strong>CERT-In (Indian Computer Emergency Response Team)</strong> and registered as a formal security case.
+        </p>
+
+        <!-- Focus Tags -->
+        <div class="focus-tags">
+          <span class="f-tag">#WebPentesting</span>
+          <span class="f-tag">#BugBountyHunting</span>
+          <span class="f-tag">#VulnerabilityResearch</span>
+          <span class="f-tag">#APISecurity</span>
+          <span class="f-tag">#AuthenticationBypass</span>
+          <span class="f-tag">#GraphQLSecurity</span>
+          <span class="f-tag">#BurpSuite</span>
+          <span class="f-tag">#CERT-InDisclosure</span>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="profile-metrics">
+          <div class="metric-box">
+            <span class="m-lbl">ACADEMIC STANDING</span>
+            <span class="m-data">3rd Year CSE (Cyber Security)</span>
+          </div>
+          <div class="metric-box">
+            <span class="m-lbl">COLLEGE</span>
+            <span class="m-data">CMS College of Engg & Tech</span>
+          </div>
+          <div class="metric-box">
+            <span class="m-lbl">RECOGNITION</span>
+            <span class="m-data highlight">CERT-In Formal Case</span>
+          </div>
+          <div class="metric-box">
+            <span class="m-lbl">LEADERSHIP AWARD</span>
+            <span class="m-data">Rajyapuraskar (Scouts)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY RESEARCH & RESPONSIBLE DISCLOSURE SECTION -->
+  <section id="disclosures" class="section-container alternate-bg">
+    <div class="section-header">
+      <div class="sec-tag">// NATIONAL VULNERABILITY DISCLOSURE</div>
+      <h2 class="sec-title">SECURITY RESEARCH & <span>DISCLOSURES</span></h2>
+      <div class="sec-divider"></div>
+      <p class="sec-desc">
+        Responsible vulnerability disclosures reported to national coordinating agencies and affected organizations in adherence to coordinated disclosure guidelines.
+      </p>
+    </div>
+
+    <div class="disclosures-grid">
+      <!-- DISCLOSURE CARD 1: OTP Brute Force & Session Replay -->
+      <div class="disclosure-card crit-border" data-tilt>
+        <div class="card-status-bar crit-bg">
+          <span class="status-indicator"></span>
+          <span>CRITICAL SEVERITY // CERT-In FORMAL CASE REGISTERED</span>
+          <span class="year-stamp">2026</span>
+        </div>
+
+        <div class="card-body">
+          <div class="target-row">
+            <span class="target-title">OTP Brute Force & Session Replay Vulnerability</span>
+            <span class="target-domain">railfeast.com</span>
+          </div>
+
+          <div class="agency-tag">
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+              <path d="M10 2L3 5v5c0 4.4 3 8.5 7 9.5 4-1 7-5.1 7-9.5V5l-7-3zm-1 12l-3-3 1.4-1.4L10 12.2l4.6-4.6L16 9l-7 5z"/>
+            </svg>
+            Reported to CERT-In (Indian Computer Emergency Response Team)
+          </div>
+
+          <p class="card-summary">
+            Identified critical authentication architecture flaws that exposed user accounts to unauthorized takeovers and sensitive data breaches:
+          </p>
+
+          <ul class="findings-list">
+            <li>
+              <strong>Missing Rate Limiting & Account Lockout:</strong> Authentication endpoint lacked rate limiting, IP throttling, and account lockout protections, allowing unlimited automated OTP brute-forcing.
+            </li>
+            <li>
+              <strong>Perpetual Session Replay:</strong> Identified a session replay vulnerability where valid JWT authorization tokens could be retained and reused indefinitely to authenticate without requesting a new OTP.
+            </li>
+            <li>
+              <strong>Data Impact:</strong> Potential compromise of sensitive user information including personal identity credentials and financial/transactional records.
+            </li>
+            <li>
+              <strong>Rigorous Verification:</strong> Engineered complete Proof of Concept (PoC) scripts and Burp Suite interception workflows demonstrating reproducible risk.
+            </li>
+          </ul>
+
+          <div class="card-footer-tags">
+            <span class="c-badge red">CWE-307: Impr. Restriction of Auth Attempts</span>
+            <span class="c-badge red">CWE-294: Auth by Replay</span>
+            <span class="c-badge cyan">Burp Suite Professional</span>
+            <span class="c-badge green">Acknowledged by CERT-In</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DISCLOSURE CARD 2: GraphQL Injection & Introspection -->
+      <div class="disclosure-card high-border" data-tilt>
+        <div class="card-status-bar high-bg">
+          <span class="status-indicator"></span>
+          <span>HIGH SEVERITY // COLLABORATIVE SECURITY RESEARCH</span>
+          <span class="year-stamp">2026</span>
+        </div>
+
+        <div class="card-body">
+          <div class="target-row">
+            <span class="target-title">GraphQL Injection & Introspection Vulnerability</span>
+            <span class="target-domain">railfeast.com</span>
+          </div>
+
+          <div class="agency-tag">
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+              <path d="M10 2L3 5v5c0 4.4 3 8.5 7 9.5 4-1 7-5.1 7-9.5V5l-7-3zm-1 12l-3-3 1.4-1.4L10 12.2l4.6-4.6L16 9l-7 5z"/>
+            </svg>
+            Submitted via Responsible Disclosure Channel to Affected Organization
+          </div>
+
+          <p class="card-summary">
+            Collaborative research exposing mission-critical schema leakage and backend injection vectors across live production GraphQL infrastructure:
+          </p>
+
+          <ul class="findings-list">
+            <li>
+              <strong>Production Schema Introspection:</strong> Identified enabled GraphQL introspection in production, allowing attackers to reconstruct the entire backend data schema and internal endpoints.
+            </li>
+            <li>
+              <strong>Sensitive Field Exposure:</strong> Revealed sensitive schema attributes including <code>password</code>, <code>accountNumber</code>, <code>ifscCode</code>, and <code>bankName</code>.
+            </li>
+            <li>
+              <strong>Injection Vectors:</strong> Audited GraphQL query resolving pipelines for injection vulnerabilities and unauthenticated access to database entities.
+            </li>
+            <li>
+              <strong>Formal Reporting:</strong> Assisted in documenting detailed technical remediation steps and submitted formal responsible disclosure dossier.
+            </li>
+          </ul>
+
+          <div class="card-footer-tags">
+            <span class="c-badge orange">CWE-200: Info Exposure (Schema Introspection)</span>
+            <span class="c-badge cyan">GraphQL Security Audit</span>
+            <span class="c-badge green">Responsible Disclosure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS & SECURITY ARSENAL TOOLS -->
+  <section id="projects" class="section-container">
+    <div class="section-header">
+      <div class="sec-tag">// OPEN-SOURCE DEFENSE & AUDIT TOOLS</div>
+      <h2 class="sec-title">SECURITY <span>TOOLS</span></h2>
+      <div class="sec-divider"></div>
+      <p class="sec-desc">
+        Engineered custom cross-platform security analysis software for authorized testing, automated auditing, and vulnerability intelligence.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- PROJECT 1: AuthSentinel -->
+      <div class="project-card" data-tilt>
+        <div class="p-header">
+          <div class="p-type">// AUTHENTICATION SCANNER</div>
+          <h3 class="p-title">AuthSentinel</h3>
+          <span class="p-subtitle">JWT & Authentication Security Analyzer</span>
+        </div>
+
+        <p class="p-desc">
+          A cross-platform JWT and authentication security analysis platform built for authorized penetration testing on Windows and Linux. Automatically analyzes JWT claims, token lifetimes, signature algorithms, issuer/audience validation, session security, cookies, CORS, and security headers.
+        </p>
+
+        <div class="p-highlights">
+          <div class="ph-item">
+            <span class="ph-icon">🛡️</span>
+            <span>Severity-based findings classification with overall security posture scoring</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">📊</span>
+            <span>Automated report generation in JSON, Markdown, and PDF formats</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">🔒</span>
+            <span>Built-in SSRF protection engine with sensitive-data redaction algorithms</span>
+          </div>
+        </div>
+
+        <div class="tech-stack-row">
+          <span class="t-pill">Next.js</span>
+          <span class="t-pill">React</span>
+          <span class="t-pill">TypeScript</span>
+          <span class="t-pill">Python</span>
+          <span class="t-pill">FastAPI</span>
+          <span class="t-pill">PostgreSQL / SQLite</span>
+          <span class="t-pill">Docker</span>
+        </div>
+
+        <div class="p-links">
+          <a href="https://github.com/KaranKumar-V-cyber/AuthSentinel.git" target="_blank" rel="noopener noreferrer" class="p-btn github">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            VIEW REPOSITORY
+          </a>
+          <button class="p-btn demo-btn" onclick="openToolSimulator('authsentinel')">
+            <span>⚡ SIMULATE AUDIT</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Web Security Header Analyzer -->
+      <div class="project-card" data-tilt>
+        <div class="p-header">
+          <div class="p-type">// HTTP AUDITING SUITE</div>
+          <h3 class="p-title">Web Security Header Analyzer</h3>
+          <span class="p-subtitle">Cross-Platform Defensive Header Scanner</span>
+        </div>
+
+        <p class="p-desc">
+          Automated security assessment utility designed to audit web applications for critical browser security headers. Inspects Content Security Policy (CSP), Strict-Transport-Security (HSTS), CORS policies, anti-clickjacking headers, and secure cookie parameters (HttpOnly, Secure, SameSite).
+        </p>
+
+        <div class="p-highlights">
+          <div class="ph-item">
+            <span class="ph-icon">🛡️</span>
+            <span>Automated checks for CSP misconfigurations, wildcard CORS, and missing HSTS</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">📈</span>
+            <span>Severity scoring engine with scan historical logs and executive reports</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">🌐</span>
+            <span>Hardened request pipeline with robust SSRF mitigations for safe target inspection</span>
+          </div>
+        </div>
+
+        <div class="tech-stack-row">
+          <span class="t-pill">Next.js</span>
+          <span class="t-pill">React</span>
+          <span class="t-pill">TypeScript</span>
+          <span class="t-pill">Python</span>
+          <span class="t-pill">FastAPI</span>
+          <span class="t-pill">SQLite / Postgres</span>
+          <span class="t-pill">Docker</span>
+        </div>
+
+        <div class="p-links">
+          <a href="https://github.com/KaranKumar-V-cyber/SecureHeaders.git" target="_blank" rel="noopener noreferrer" class="p-btn github">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            VIEW REPOSITORY
+          </a>
+          <button class="p-btn demo-btn" onclick="openToolSimulator('secureheaders')">
+            <span>⚡ SIMULATE AUDIT</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE AUDIT SIMULATOR WIDGET -->
+    <div class="interactive-simulator-box" id="auditSimulator">
+      <div class="sim-header">
+        <div class="sim-title">
+          <span class="sim-dot"></span>
+          <span>INTERACTIVE LIVE AUDIT SIMULATOR // [SEC_TOOLS ENGINE]</span>
+        </div>
+        <div class="sim-modes">
+          <button class="sim-tab active" id="tabAuthSentinel" onclick="switchSimulatorTab('authsentinel')">AuthSentinel Mode</button>
+          <button class="sim-tab" id="tabSecureHeaders" onclick="switchSimulatorTab('secureheaders')">SecureHeaders Mode</button>
+        </div>
+      </div>
+
+      <div class="sim-body">
+        <div class="sim-input-row">
+          <span class="sim-prompt">&gt; TARGET:</span>
+          <input type="text" id="simTargetInput" value="https://railfeast.com/api/v1/auth" placeholder="Enter target endpoint..." spellcheck="false">
+          <button class="sim-run-btn" id="simRunBtn" onclick="runSimulation()">ANALYZE</button>
+        </div>
+
+        <div class="sim-terminal-output" id="simOutput">
+          <div class="output-line">// Ready for security inspection. Click "ANALYZE" to test sample endpoint.</div>
+          <div class="output-line">// Engine: AuthSentinel v1.0 [SSRF Protected · Heuristic Scanner Active]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS & ARSENAL SECTION -->
+  <section id="skills" class="section-container alternate-bg">
+    <div class="section-header">
+      <div class="sec-tag">// PENETRATION TESTING ARSENAL</div>
+      <h2 class="sec-title">TECHNICAL <span>SKILLS</span></h2>
+      <div class="sec-divider"></div>
+      <p class="sec-desc">
+        Specialized capabilities across modern web penetration testing, network reconnaissance, and exploit analysis.
+      </p>
+    </div>
+
+    <div class="skills-layout">
+      <!-- Left Column: Attack Vectors & Vulnerability Mastery -->
+      <div class="skills-col">
+        <h3 class="skills-group-title">VULNERABILITY & TESTING PROFICIENCY</h3>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">IDOR / Broken Access Control</span>
+            <span class="skill-pct">95%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 95%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">Burp Suite & Proxy Interception</span>
+            <span class="skill-pct">92%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 92%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">Authentication Bypass & Session Replay</span>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">GraphQL Security & Introspection</span>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 88%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">XSS (Cross-Site Scripting)</span>
+            <span class="skill-pct">86%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 86%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">SQL Injection (SQLi) & SQLMap</span>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">Networking Fundamentals & Nmap Recon</span>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-meter-wrap">
+          <div class="skill-info">
+            <span class="skill-name">Server-Side Template Injection (SSTI)</span>
+            <span class="skill-pct">82%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 82%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Security Toolkit Chips -->
+      <div class="skills-col">
+        <h3 class="skills-group-title">TOOLKIT & OPERATIONAL PLATFORMS</h3>
+        <p class="col-sub">Click any tool to view operational usage:</p>
+
+        <div class="tools-grid">
+          <div class="tool-chip" onclick="showToolIntel('Burp Suite Pro')">
+            <span class="t-name">Burp Suite Pro</span>
+            <span class="t-cat">Web Proxy & Intruder</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('Kali Linux')">
+            <span class="t-name">Kali Linux</span>
+            <span class="t-cat">Testing OS</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('Nmap')">
+            <span class="t-name">Nmap</span>
+            <span class="t-cat">Port & Service Recon</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('SQLMap')">
+            <span class="t-name">SQLMap</span>
+            <span class="t-cat">Automated SQLi Audit</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('Docker')">
+            <span class="t-name">Docker</span>
+            <span class="t-cat">Containerized Labs</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('FastAPI & Python')">
+            <span class="t-name">Python / FastAPI</span>
+            <span class="t-cat">Exploit PoCs & APIs</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('TypeScript & React')">
+            <span class="t-name">TypeScript / Next.js</span>
+            <span class="t-cat">Security UI Tools</span>
+          </div>
+          <div class="tool-chip" onclick="showToolIntel('PostgreSQL / SQLite')">
+            <span class="t-name">Postgres / SQLite</span>
+            <span class="t-cat">Database Auditing</span>
+          </div>
+        </div>
+
+        <!-- Tool Intelligence Card -->
+        <div class="tool-intel-box" id="toolIntelDisplay">
+          <div class="ti-title" id="tiName">TOOL INTEL: Burp Suite Pro</div>
+          <p class="ti-desc" id="tiDesc">
+            Primary tool for application traffic manipulation, custom extension scripting, automated fuzzing of authentication endpoints, and constructing verifiable vulnerability PoCs for CERT-In disclosures.
+          </p>
+        </div>
+
+        <!-- Areas of Interest -->
+        <div class="areas-interest-box">
+          <h4 class="ai-heading">CORE SECURITY DOMAINS</h4>
+          <div class="ai-list">
+            <div class="ai-item">
+              <span class="ai-bullet">▶</span>
+              <span><strong>Web App Penetration Testing:</strong> Manual & automated testing following OWASP Top 10 standards.</span>
+            </div>
+            <div class="ai-item">
+              <span class="ai-bullet">▶</span>
+              <span><strong>Bug Bounty Hunting:</strong> Real-world testing against production environments for high-severity logic flaws.</span>
+            </div>
+            <div class="ai-item">
+              <span class="ai-bullet">▶</span>
+              <span><strong>Vulnerability Research:</strong> Identifying 0-day & 1-day flaws in auth workflows and API integrations.</span>
+            </div>
+            <div class="ai-item">
+              <span class="ai-bullet">▶</span>
+              <span><strong>API Security:</strong> Auditing RESTful and GraphQL endpoints for unauthenticated introspection & schema leaks.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & RECOGNITION SECTION -->
+  <section id="education" class="section-container">
+    <div class="section-header">
+      <div class="sec-tag">// ACADEMIC & MERIT RECOGNITION</div>
+      <h2 class="sec-title">EDUCATION & <span>HONORS</span></h2>
+      <div class="sec-divider"></div>
+    </div>
+
+    <div class="timeline-container">
+      <!-- Item 1: Degree -->
+      <div class="timeline-item" data-tilt>
+        <div class="t-node">
+          <div class="node-dot"></div>
+          <div class="node-year">2024 - 2028</div>
+        </div>
+        <div class="t-card">
+          <div class="t-badge edu">BACHELOR OF ENGINEERING</div>
+          <h3 class="t-title">Computer Science Engineering (Cyber Security)</h3>
+          <h4 class="t-org">CMS College of Engineering and Technology</h4>
+          <p class="t-text">
+            3rd Year student actively covering network security, web application security, ethical hacking, cryptography, and digital forensics. Applying theoretical foundation to independent national vulnerability research and tool development.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 2: CERT-In Recognition -->
+      <div class="timeline-item" data-tilt>
+        <div class="t-node">
+          <div class="node-dot certin-dot"></div>
+          <div class="node-year">2026</div>
+        </div>
+        <div class="t-card certin-card">
+          <div class="t-badge rec">NATIONAL RECOGNITION</div>
+          <h3 class="t-title">CERT-In Official Responsible Disclosure Registration</h3>
+          <h4 class="t-org">Indian Computer Emergency Response Team (Govt. of India)</h4>
+          <p class="t-text">
+            Officially acknowledged by CERT-In for identifying and responsibly reporting critical authentication vulnerabilities (OTP brute-force & infinite session replay). Registered as a formal security case under India's national disclosure framework.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 3: Rajyapuraskar Award -->
+      <div class="timeline-item" data-tilt>
+        <div class="t-node">
+          <div class="node-dot award-dot"></div>
+          <div class="node-year">2025</div>
+        </div>
+        <div class="t-card">
+          <div class="t-badge award">STATE-LEVEL HONORS</div>
+          <h3 class="t-title">Rajyapuraskar Award — Bharat Scouts and Guides</h3>
+          <h4 class="t-org">The Bharat Scouts and Guides</h4>
+          <p class="t-text">
+            Prestigious state-level award presented for demonstrated leadership, community service, discipline, and scouting excellence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE CYBER TERMINAL SECTION -->
+  <section id="terminal" class="section-container alternate-bg">
+    <div class="section-header">
+      <div class="sec-tag">// SYSTEM CONSOLE // /bin/kv-sh</div>
+      <h2 class="sec-title">INTERACTIVE <span>TERMINAL</span></h2>
+      <div class="sec-divider"></div>
+      <p class="sec-desc">
+        Explore Karan's credentials, run security queries, or inspect tool parameters via command line interface.
+      </p>
+    </div>
+
+    <div class="terminal-window">
+      <div class="terminal-bar">
+        <div class="term-dots">
+          <span class="t-dot red"></span>
+          <span class="t-dot yellow"></span>
+          <span class="t-dot green"></span>
+        </div>
+        <div class="term-title">kv@sec-ops: ~ /bin/kv-sh (v2.6)</div>
+        <div class="term-status">ONLINE</div>
+      </div>
+
+      <div class="terminal-content" id="terminalOutput">
+        <div class="term-row">
+          <span class="term-cyan">======================================================================</span>
+        </div>
+        <div class="term-row">
+          <span class="term-green">KARAN KUMAR V // CYBERSECURITY RESEARCH CONSOLE v2.6</span>
+        </div>
+        <div class="term-row">
+          <span class="term-dim">Type <span class="term-hl">'help'</span> to view available security commands.</span>
+        </div>
+        <div class="term-row">
+          <span class="term-cyan">======================================================================</span>
+        </div>
+      </div>
+
+      <!-- Quick Command Buttons for Easy Touch & Click -->
+      <div class="quick-commands">
+        <span class="qc-lbl">QUICK CMDS:</span>
+        <button class="qc-btn" onclick="executeTermCommand('whoami')">whoami</button>
+        <button class="qc-btn" onclick="executeTermCommand('certin')">certin</button>
+        <button class="qc-btn" onclick="executeTermCommand('disclosures')">disclosures</button>
+        <button class="qc-btn" onclick="executeTermCommand('projects')">projects</button>
+        <button class="qc-btn" onclick="executeTermCommand('skills')">skills</button>
+        <button class="qc-btn" onclick="executeTermCommand('contact')">contact</button>
+        <button class="qc-btn" onclick="executeTermCommand('clear')">clear</button>
+      </div>
+
+      <!-- Terminal Input Line -->
+      <div class="term-input-line">
+        <span class="term-prompt">karan@sec-research:~$ </span>
+        <input type="text" id="terminalInput" placeholder="type command (e.g. 'help', 'whoami', 'certin')..." autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & ENGAGEMENT SECTION -->
+  <section id="contact" class="section-container">
+    <div class="section-header">
+      <div class="sec-tag">// INITIATE SECURE COMMS</div>
+      <h2 class="sec-title">GET IN <span>TOUCH</span></h2>
+      <div class="sec-divider"></div>
+      <p class="sec-desc">
+        Interested in collaborating on vulnerability research, penetration testing engagements, or security tool engineering? Reach out directly.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Details & Direct Links -->
+      <div class="contact-info-col">
+        <!-- Email Box -->
+        <div class="contact-card" data-tilt>
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="cc-details">
+            <span class="cc-lbl">EMAIL ADDRESS</span>
+            <a href="mailto:karankumar.kv.cyber@gmail.com" class="cc-val">karankumar.kv.cyber@gmail.com</a>
+          </div>
+          <button class="copy-btn" onclick="copyToClipboard('karankumar.kv.cyber@gmail.com', this)">
+            <span>COPY</span>
+          </button>
+        </div>
+
+        <!-- Phone Box -->
+        <div class="contact-card" data-tilt>
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="cc-details">
+            <span class="cc-lbl">TELEPHONE / WHATSAPP</span>
+            <a href="tel:+918807880659" class="cc-val">+91 8807880659</a>
+          </div>
+          <button class="copy-btn" onclick="copyToClipboard('+918807880659', this)">
+            <span>COPY</span>
+          </button>
+        </div>
+
+        <!-- LinkedIn Box -->
+        <div class="contact-card" data-tilt>
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </div>
+          <div class="cc-details">
+            <span class="cc-lbl">LINKEDIN PROFILE</span>
+            <a href="https://www.linkedin.com/in/karan-kumar-kv/" target="_blank" rel="noopener noreferrer" class="cc-val">linkedin.com/in/karan-kumar-kv</a>
+          </div>
+          <a href="https://www.linkedin.com/in/karan-kumar-kv/" target="_blank" rel="noopener noreferrer" class="ext-btn">
+            <span>VISIT</span>
+          </a>
+        </div>
+
+        <!-- GitHub Box -->
+        <div class="contact-card" data-tilt>
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </div>
+          <div class="cc-details">
+            <span class="cc-lbl">GITHUB REPOSITORIES</span>
+            <a href="https://github.com/KaranKumar-V-cyber" target="_blank" rel="noopener noreferrer" class="cc-val">github.com/KaranKumar-V-cyber</a>
+          </div>
+          <a href="https://github.com/KaranKumar-V-cyber" target="_blank" rel="noopener noreferrer" class="ext-btn">
+            <span>VISIT</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Message Interface -->
+      <div class="contact-form-wrap">
+        <form class="cyber-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-header">
+            <span class="fh-title">// TRANSMIT MESSAGE</span>
+            <span class="fh-sec">256-BIT TLS ENCRYPTED</span>
+          </div>
+
+          <div class="form-group">
+            <label for="senderName" class="form-label">SENDER IDENTITY (NAME / ORG):</label>
+            <input type="text" id="senderName" required placeholder="e.g. John Doe / Security Team" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="senderEmail" class="form-label">RETURN COMM (EMAIL):</label>
+            <input type="email" id="senderEmail" required placeholder="e.g. security@organization.com" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">ENGAGEMENT SUBJECT:</label>
+            <select id="subject" class="form-input">
+              <option value="Vulnerability Research Collaboration">Vulnerability Research Collaboration</option>
+              <option value="Penetration Testing Project">Penetration Testing Project</option>
+              <option value="Security Tool Bug / Feature">Security Tool (AuthSentinel / SecureHeaders)</option>
+              <option value="General Professional Inquiry">General Professional Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="messageBody" class="form-label">TRANSMISSION PAYLOAD (MESSAGE):</label>
+            <textarea id="messageBody" rows="4" required placeholder="Enter transmission message..." class="form-input"></textarea>
+          </div>
+
+          <button type="submit" class="cyber-btn primary-btn submit-btn" id="sendBtn">
+            <span class="btn-text">TRANSMIT PACKET // SEND MESSAGE</span>
+          </button>
+
+          <div class="form-notice" id="formStatus">
+            * Direct mail will open your default email client with encrypted payload.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="f-top">
+        <div class="f-logo">
+          <span class="f-brand">KARAN KUMAR V</span>
+          <span class="f-tagline">// ETHICAL HACKER & SECURITY RESEARCHER</span>
+        </div>
+        <div class="f-security-note">
+          <span class="sec-lock">🔒</span> ALL RESEARCH CONDUCTED UNDER AUTHORIZED TESTING FRAMEWORKS
+        </div>
+      </div>
+
+      <div class="f-divider"></div>
+
+      <div class="f-bottom">
+        <p class="copyright">
+          &copy; 2026 <span>KARAN KUMAR V</span>. CERT-In Acknowledged Responsible Disclosure. All rights reserved.
+        </p>
+        <p class="f-location">
+          BASE STATION: ERODE, TAMIL NADU, INDIA // SYSTEM ONLINE
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
