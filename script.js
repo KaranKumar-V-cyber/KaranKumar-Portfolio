@@ -549,24 +549,92 @@ function showToast(message) {
 /* ==========================================================================
    10. CONTACT FORM SUBMISSION
    ========================================================================== */
-window.handleFormSubmit = function(e) {
+window.handleFormSubmit = async function(e) {
   e.preventDefault();
-  const name = document.getElementById('senderName').value;
-  const email = document.getElementById('senderEmail').value;
+  const form = document.getElementById('contactForm');
+  const sendBtn = document.getElementById('sendBtn');
+  const formStatus = document.getElementById('formStatus');
+  const name = document.getElementById('senderName').value.trim();
+  const email = document.getElementById('senderEmail').value.trim();
   const subject = document.getElementById('subject').value;
-  const message = document.getElementById('messageBody').value;
+  const message = document.getElementById('messageBody').value.trim();
 
-  playCyberSound('powerup');
+  if (!name || !email || !message) return;
 
-  // Prepare mailto link
-  const bodyText = `Sender Name / Org: ${name}\nEmail: ${email}\n\nTransmission Payload:\n${message}`;
-  const mailtoUrl = `mailto:karankumar.kv.cyber@gmail.com?subject=${encodeURIComponent('[SECURITY COMM] ' + subject)}&body=${encodeURIComponent(bodyText)}`;
+  const origBtnContent = sendBtn.innerHTML;
+  sendBtn.disabled = true;
+  sendBtn.innerHTML = '<span class="btn-text">TRANSMITTING PACKET...</span>';
+  if (formStatus) {
+    formStatus.style.color = '#00f0ff';
+    formStatus.textContent = '// Dispatching encrypted packet to karankumar.kv.cyber@gmail.com...';
+  }
 
-  showToast('TRANSMITTING PACKET // Opening email client...');
+  showToast('TRANSMITTING PACKET // Sending email...');
 
-  setTimeout(() => {
-    window.location.href = mailtoUrl;
-  }, 600);
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/karankumar.kv.cyber@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        _subject: `[Cyber Portfolio] ${subject} - from ${name}`,
+        _replyto: email,
+        subject: subject,
+        message: message
+      })
+    });
+
+    const result = await response.json();
+
+    if (response.ok && (result.success === 'true' || result.success === true)) {
+      sendBtn.innerHTML = '<span class="btn-text" style="color:#00ff88;">✓ PACKET TRANSMITTED // DELIVERED</span>';
+      if (formStatus) {
+        formStatus.style.color = '#00ff88';
+        formStatus.textContent = "✓ TRANSMISSION SUCCESSFUL // Message delivered to Karan's inbox.";
+      }
+      showToast('TRANSMISSION CONFIRMED // Email delivered!');
+      form.reset();
+      setTimeout(() => {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = origBtnContent;
+        if (formStatus) {
+          formStatus.style.color = '';
+          formStatus.textContent = '* Direct transmission sends payload directly to karankumar.kv.cyber@gmail.com';
+        }
+      }, 5000);
+    } else {
+      throw new Error(result.message || 'Dispatch error');
+    }
+  } catch (err) {
+    console.warn('FormSubmit fallback:', err);
+    // Seamless fallback to web email client / mailto so message is never lost
+    const bodyText = `Sender Name / Org: ${name}\nEmail: ${email}\n\nTransmission Payload:\n${message}`;
+    const mailSubject = encodeURIComponent(`[SECURITY COMM] ${subject}`);
+    const mailBody = encodeURIComponent(bodyText);
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=karankumar.kv.cyber@gmail.com&su=${mailSubject}&body=${mailBody}`;
+
+    sendBtn.innerHTML = '<span class="btn-text">LAUNCHING EMAIL CLIENT...</span>';
+    if (formStatus) {
+      formStatus.style.color = '#ffaa00';
+      formStatus.textContent = '! Redirecting to web email compose...';
+    }
+    showToast('FALLBACK ROUTE // Opening web email compose...');
+
+    // Try opening Gmail Web, or fallback to system mailto
+    const opened = window.open(gmailUrl, '_blank');
+    if (!opened) {
+      window.location.href = `mailto:karankumar.kv.cyber@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+    }
+
+    setTimeout(() => {
+      sendBtn.disabled = false;
+      sendBtn.innerHTML = origBtnContent;
+    }, 4000);
+  }
 };
 
 /* ==========================================================================
